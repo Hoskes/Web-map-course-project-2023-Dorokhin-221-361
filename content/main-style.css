@@ -1,0 +1,12 @@
+#headerstyle{
+    background-color: rgb(37, 167, 1);
+}
+#bodystyle{
+    position:static;
+}
+p{
+    background-color:blueviolet;
+}
+#logo-png{
+    max-width: 40px;
+}
