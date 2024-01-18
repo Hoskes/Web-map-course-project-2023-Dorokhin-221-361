@@ -6,8 +6,11 @@
     //добавить GET-запросы к номерам датасетов 
     //можно попробовать выкидывать AJAX когда нужно подробное описание
     // // вставляет количество записей датасета
+    datasetNo =62541;
+    
 
-    function sendToDB(jsonData, numOfRecords) {
+    $(document).ready(function() {
+        function sendToDB(jsonData, numOfRecords) {
         $.ajax({
             type: "POST",
             url: "callInsertJSONProcedure.php",
@@ -27,10 +30,11 @@
         });
     }
 
-    $(document).ready(function() {
+
+
         let num = 10;
         $.ajax({
-            url: 'https://apidata.mos.ru/v1/datasets/503/count?$orderby=global_id&api_key=78a7232a-c378-44d7-bcd4-75dd6e24efdc',
+            url: 'https://apidata.mos.ru/v1/datasets/'+datasetNo+'/count?$orderby=global_id&api_key=78a7232a-c378-44d7-bcd4-75dd6e24efdc',
             method: 'get',
             async: false, // Установите async в false для синхронного запроса
             success: function(data) {
@@ -40,22 +44,22 @@
             }
         });
         console.log(num);
-        
+
 
 
 
         // парсит датасет с сайта в json, по параметрам в теле POST-запроса
-        function downloadDataToDB() {
+        function downloadDataToDB(skip,top) {
             // Отправка AJAX-запроса на сервер
             $.ajax({
-                url: 'https://apidata.mos.ru/v1/datasets/503/rows?$orderby=global_id&api_key=78a7232a-c378-44d7-bcd4-75dd6e24efdc',
+                url: 'https://apidata.mos.ru/v1/datasets/'+datasetNo+'/rows?$orderby=global_id&api_key=78a7232a-c378-44d7-bcd4-75dd6e24efdc'+'&$skip='+skip+'&$top='+top,
                 type: 'GET',
                 dataType: 'json',
                 success: function(response) {
                     // Обновление контейнера
                     if (response.length > 0) {
                         console.log('success');
-                        sendToDB(response, num);
+                        sendToDB(response, top);
                     } else {
                         console.log('empty');
                     }
@@ -66,7 +70,19 @@
             });
         }
         // Вызов функции для первоначальной загрузки части страницы
-        downloadDataToDB();
+        
+        skip = 0;
+        downloadPerTime = 100;
+        while (num > 0) {
+            if (num < downloadPerTime) {
+                downloadDataToDB(skip,num);
+                num=0;
+            } else {
+                downloadDataToDB(skip,downloadPerTime);
+                num-=downloadPerTime;
+            }
+            skip+=downloadPerTime;
+        }
         console.log('SUCCESS');
     });
 </script>

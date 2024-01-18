@@ -4,8 +4,10 @@
 include 'dbConnect.php';
 include 'content/header.php';
 echo '<div class="container">';
+
 // $forum_id = $_GET['id'];
 if (!isset($_GET['id']) || $_GET['id'] == '') {
+    echo '<h2 class="text-center">Обсуждения</h2>';
     $query = "SELECT * FROM discusses ORDER BY date_changed desc;";
     $result = mysqli_query($mysql, $query);
     //echo mysqli_num_rows($result);
@@ -16,9 +18,9 @@ if (!isset($_GET['id']) || $_GET['id'] == '') {
             if(strlen($descr)>200){
                 $descr=substr($descr,0,400).' . . .';
             }
-            $content.="<div class='card'>";
+            $content.="<div class='card mt-4 p-2'>";
             $content .= "<br><h2 class='card-title'>" . $forum['title'] . "</h2><div>" . $descr . "</div><br><div>" . $forum['date_created'] . " " . $forum['date_changed'] . "</div>";
-            $content .= "<a class='card-text' href='forum-page.php?id=" . $forum['id'] . "'>Открыть</a>";
+            $content .= "<a class='btn btn-primary' href='forum-page.php?id=" . $forum['id'] . "'>Открыть</a>";
             $content .="</div>";
         }
         echo $content;
@@ -35,8 +37,8 @@ if (!isset($_GET['id']) || $_GET['id'] == '') {
     if (mysqli_num_rows($result) > 0) { //Если в БД есть данные об устройстве
         while ($forum = mysqli_fetch_assoc($result)) {
             $content = '';
-            $content.="<div class='card'>";
-            $content .= "<a href='index.php'>К форумам</a>";
+            $content.="<div class='card mt-2 p-3'>";
+            $content .= "<a href='forum-page.php'>К форумам</a>";
             $content .= "<br><h2 class='card-title'>" . $forum['title'] . "</h2><div class='card-text'>" . $forum['description'] . "</div><br><div>Дата создания:" . $forum['date_created'] . "<br>Дата изменения: " . $forum['date_changed'] . "</div>";
             $content .="</div>";
         }

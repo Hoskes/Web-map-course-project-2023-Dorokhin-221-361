@@ -5,7 +5,7 @@
 // include 'Web-map-project/forum-page.php?id=1';
 ?>
 
-<div id='try-req' class='col-md-12 text-center'></div>
+<div id='try-req' class='col-md-12 text-center p-3'></div>
 
 <script>
     $(document).ready(function() {
@@ -62,9 +62,9 @@
         })
     })
 </script>
-<div class='container mt-2'>
+<div class='container mt-2 mb-2 col-12'>
     <form class="row text-center" method="post">
-        <div class="col-md-6 col-sm-10 ms-0">
+        <div class="col-md-10 col-sm-10 ms-0">
             <textarea class='form-control' name="comment" placeholder="Введите сообщение сообщение..."></textarea>
 
         </div>

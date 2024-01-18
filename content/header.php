@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php
-$title = "Druga-kajdomu.ru Дорохин Андрей 221-361";
-$title = "Druga-kajdomu.ru Дорохин Андрей 221-361";
-$n_link = array("Главная", "Форум", "Обратная связь","Корзина","Регистрация", "Авторизация");
-$link = array("index.php", "forum-page.php", "form.php","buy-page.php","reg.php", "authorization-alter.php");
+$title = "СоциальнаяСреда.рф Дорохин Андрей 221-361";
+$title = "СоциальнаяСреда.рф Дорохин Андрей 221-361";
+$n_link = array("Главная", "Форум", "Карта","Регистрация", "Авторизация");
+$link = array("index.php", "forum-page.php","map.php","buy-page.php", "auth-page.php");
 ?>
 
 <head>
@@ -34,7 +34,7 @@ $link = array("index.php", "forum-page.php", "form.php","buy-page.php","reg.php"
     <header id='headerstyle' class='navbar navbar-expand-sm navbar-dark sticky-top'>
         <div class="logo"><img id="logo-png" src="content/static/imgs/logo.png"><?php echo $title ?></div>
         <div class="to-bottom">
-            <nav>
+            <nav class="navbar-nav nav-fill w-100">
                 <?php
                 session_start();
                 if (!isset($_SESSION['autho'])) {
@@ -72,3 +72,4 @@ $link = array("index.php", "forum-page.php", "form.php","buy-page.php","reg.php"
             </nav>
         </div>
     </header>
+    <main id ="page" class='card ms-5 me-5 mt-2 p-2'>

@@ -1,6 +1,6 @@
 <?php
 $forum_id = $_GET['f_id'];
-echo $forum_id;
+// echo $forum_id;
 if (isset($_GET['limit_msg'])) {
     $limit_msg += $_GET['limit_msg'];
 } else {
@@ -15,9 +15,9 @@ if (mysqli_num_rows($result) > 0) { //Если в БД есть данные о�
     echo '<div class="container col-12 align-items-center p-auto">';
     while ($forum = mysqli_fetch_assoc($result)) {
 
-        $content .= "<br>" . "<div class='col-8'>";
-        $content .= "<p class=' mt=2 mb-0'>" . $forum["first_name"] . " " . $forum["last_name"] . " " . $forum['date_created']."</p>";
-        $content .= $forum['msg_text'] ;
+        $content .= "<br>" . "<div id='text' class='col-12 p-1 rounded-3'>";
+        $content .= "<p id='text-i' class=' mt=2 mb-0'>" . $forum["first_name"] . " " . $forum["last_name"] . " " . $forum['date_created']."</p>";
+        $content .= '<div >'.$forum['msg_text'].'</div>' ;
         $content .= "</div>";
     }
     echo $content;
@@ -25,4 +25,4 @@ if (mysqli_num_rows($result) > 0) { //Если в БД есть данные о�
 } else {
     echo ('');
 }
-?>;
+?>

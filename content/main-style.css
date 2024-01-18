@@ -1,12 +1,39 @@
-#headerstyle{
-    background-color: rgb(37, 167, 1);
+#headerstyle,#footer{
+    background-color: rgb(29, 120, 4);
 }
 #bodystyle{
-    position:static;
+    position: relative;
+    background-color: rgb(255, 249, 241);
+    background: url('/Web-map-project/content/static/imgs/backpic.jpg');
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    
 }
 p{
     background-color:blueviolet;
 }
 #logo-png{
     max-width: 40px;
+}
+#logo-png{
+    color: azure;
+    
+}
+#page{
+    background-color: rgb(248, 255, 240);
+    min-height: 90vh;
+}
+#text{
+    background-color: rgb(254, 255, 252);
+    border: 2px solid rgba(22, 59, 0, 0.804);
+    border-radius: 3px;
+}
+#text-i{
+    border-radius: 3px;
+}
+li{
+
+    list-style: none;
+    background-color: #eeecec;
 }

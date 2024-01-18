@@ -9,7 +9,7 @@ echo($_POST['counter']);
 include 'dbConnect.php';
 
 //написать переключатель
-$query = "CALL insertAdultMed(?,?)";
+$query = "CALL insertSchools(?,?)";
 $stmt = $mysql->prepare($query);
 $stmt->bind_param("ss",  $_POST['json'], $_POST['counter']);
 $stmt->execute();
