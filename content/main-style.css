@@ -10,8 +10,20 @@
     background-repeat: no-repeat;
     
 }
+a{
+    
+    background-color: rgb(2, 173, 19);
+    border-radius: 3px;
+    border: 1px solid snow;
+    color: aliceblue;
+    
+}
+#ad{
+    color: aliceblue;
+    text-decoration: none;
+}
 p{
-    background-color:blueviolet;
+    background-color:rgb(46, 115, 0);
 }
 #logo-png{
     max-width: 40px;
@@ -36,4 +48,12 @@ li{
 
     list-style: none;
     background-color: #eeecec;
+}
+#btn-sumbit,#exit{
+    background-color: rgb(2, 173, 19);
+    color: #eeecec;
+    border: 1px solid snow;
+}
+#title{
+    color: #eeecec;
 }

@@ -126,8 +126,12 @@ function markPlaces(map) {
                     hullCoordinates.push([element['y'], element['x']]);
                     coordinates.push([element['y'], element['x']]);
                     // console.log(typeof element['x']+" "+ element['y']);
+                    let group_num = element['title']
+                    if(element['alias']!=null){
+                        group_num=element['alias'];
+                    }
                     var myPoint = new ymaps.Placemark([element['y'], element['x']], {
-                        balloonContent: "Группа:" + element['title'] + ". " + element['y'] + " " + element['x'],
+                        balloonContent: "Группа: " + group_num + "."+element['full_name']+" (" + element['y'] + " " + element['x']+") UID: "+element['id'],
                     }, {
                         iconColor: color + ''
                     });
@@ -165,19 +169,13 @@ function init() {
     console.log(data);
     markPlaces(myMap);
 
-
-
-
-          // Список данных для поиска
-          
-
         const searchInput = document.getElementById("searchInput");
         const searchResults = document.getElementById("searchResults");
 
         // Функция для обновления результатов поиска
         function updateSearchResults() {
             const query = searchInput.value.toLowerCase();
-            console.log(typeof data[0]['title']);
+            // console.log(typeof data[0]['title']);
             const filteredData = data.filter(item => item.title.toString().includes(query));
 
             // Очищаем предыдущие результаты
@@ -187,13 +185,13 @@ function init() {
             filteredData.forEach(item => {
                 const li = document.createElement("li");
                 // li.classList.add("col-4 text-center");
-                li.className = "text-center "
-                li.textContent = item['title'] + " (" + item['y'] +" "+item['x']+ ")";
+                li.className = "text-center"
+                li.textContent = item['title'] +" "+ item['full_name'] +" (" + item['y'] +" "+item['x']+ ")";
                 li.addEventListener("click", e => {  
                     searchInput.value = "";
                     searchResults.innerHTML = "";
-                    myMap.panTo([item['y'],item['x']]);
-                    myMap.setZoom(12);
+                    myMap.setCenter([item['y'],item['x']]);
+                    myMap.setZoom(18);
                 });
                 searchResults.appendChild(li);
             });

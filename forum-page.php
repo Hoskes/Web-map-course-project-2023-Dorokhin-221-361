@@ -20,7 +20,7 @@ if (!isset($_GET['id']) || $_GET['id'] == '') {
             }
             $content.="<div class='card mt-4 p-2'>";
             $content .= "<br><h2 class='card-title'>" . $forum['title'] . "</h2><div>" . $descr . "</div><br><div>" . $forum['date_created'] . " " . $forum['date_changed'] . "</div>";
-            $content .= "<a class='btn btn-primary' href='forum-page.php?id=" . $forum['id'] . "'>Открыть</a>";
+            $content .= "<a id='btn-sumbit' class='btn btn-sucsess' href='forum-page.php?id=" . $forum['id'] . "'>Открыть</a>";
             $content .="</div>";
         }
         echo $content;
