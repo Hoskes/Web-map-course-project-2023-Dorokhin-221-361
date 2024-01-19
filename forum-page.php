@@ -19,7 +19,7 @@ if (!isset($_GET['id']) || $_GET['id'] == '') {
                 $descr=substr($descr,0,400).' . . .';
             }
             $content.="<div class='card mt-4 p-2'>";
-            $content .= "<br><h2 class='card-title'>" . $forum['title'] . "</h2><div>" . $descr . "</div><br><div>" . $forum['date_created'] . " " . $forum['date_changed'] . "</div>";
+            $content .= "<br><h2 class='card-title'>" . $forum['title'] . "</h2><div>" . $descr . "</div class='mt-2 ms-2'></h2><div class='card-text'>" . $forum['description'] . "</div class='mt-2 ms-2 p-2'><br><div>Дата создания:" . $forum['date_created'] . "<br>Дата изменения: " . $forum['date_changed'] . "</div>";
             $content .= "<a id='btn-sumbit' class='btn btn-sucsess' href='forum-page.php?id=" . $forum['id'] . "'>Открыть</a>";
             $content .="</div>";
         }
@@ -38,8 +38,8 @@ if (!isset($_GET['id']) || $_GET['id'] == '') {
         while ($forum = mysqli_fetch_assoc($result)) {
             $content = '';
             $content.="<div class='card mt-2 p-3'>";
-            $content .= "<a href='forum-page.php'>К форумам</a>";
-            $content .= "<br><h2 class='card-title'>" . $forum['title'] . "</h2><div class='card-text'>" . $forum['description'] . "</div><br><div>Дата создания:" . $forum['date_created'] . "<br>Дата изменения: " . $forum['date_changed'] . "</div>";
+            $content .= "<a id='ad' class='p-2' href='forum-page.php'>К форумам</a>";
+            $content .= "<br><h2 class='card-title'>" . $forum['title'] . "</h2><div class='card-text'>" . $forum['description'] . "</div><br><div class='mt-2 ms-2 p-2'>Дата создания:" . $forum['date_created'] . "<br>Дата изменения: " . $forum['date_changed'] . "</div>";
             $content .="</div>";
         }
         echo $content;

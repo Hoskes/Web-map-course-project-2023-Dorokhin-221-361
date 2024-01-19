@@ -68,10 +68,17 @@ if (!isset($_GET['id'])) {
                     const cell7 = document.createElement('td');
                     row.appendChild(cell7);
 
-                    const link1 = document.createElement('a');
-                    link1.textContent = 'Изменить кластер';
-                    link1.href = 'changeCluster.php?id=' + item['id'];
-                    cell6.appendChild(link1);
+                    const div1 = document.createElement('div');
+                            div1.id = 'div-gr-bg';
+                            div1.className ='text-center';
+                            div1.href = 'changeCluster.php?id=' + item['id'];
+                            cell6.appendChild(div1);
+
+                            const link1 = document.createElement('a');
+                            link1.id = 'as1';
+                            link1.textContent = 'Изменить кластер';
+                            link1.href = 'changeCluster.php?id=' + item['id'];
+                            div1.appendChild(link1);
 
                     // const link2 = document.createElement('a');
                     // link2.textContent = 'Показать на карте';
@@ -132,10 +139,18 @@ if (!isset($_GET['id'])) {
                             const cell7 = document.createElement('td');
                             row.appendChild(cell7);
         
+
+                            const div1 = document.createElement('div');
+                            div1.id = 'div-gr-bg';
+                            div1.className ='text-center';
+                            div1.href = 'changeCluster.php?id=' + item['id'];
+                            cell6.appendChild(div1);
+
                             const link1 = document.createElement('a');
+                            link1.id = 'as1';
                             link1.textContent = 'Изменить кластер';
                             link1.href = 'changeCluster.php?id=' + item['id'];
-                            cell6.appendChild(link1);
+                            div1.appendChild(link1);
         
                             // const link2 = document.createElement('a');
                             // link2.textContent = 'Показать на карте';

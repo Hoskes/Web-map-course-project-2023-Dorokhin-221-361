@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php
-$title = "СоциальнаяСреда.рф Дорохин Андрей 221-361";
-$title = "СоциальнаяСреда.рф Дорохин Андрей 221-361";
-$n_link = array("Главная", "Форум", "Карта","Сменить кластер","Регистрация", "Авторизация");
-$link = array("index.php", "forum-page.php","map.php","changeCluster.php","buy-page.php", "auth-page.php");
+$title = "СоциальнаяСреда.рф";
+$title = "СоциальнаяСреда.рф";
+$n_link = array("Главная", "Форум", "Карта","Сменить кластер","Изменить псевдоним кластеров","Регистрация", "Авторизация");
+$link = array("index.php", "forum-page.php","map.php","changeCluster.php","ClustersData.php","reg.php", "auth-page.php");
 ?>
 
 <head>
@@ -33,10 +33,10 @@ $link = array("index.php", "forum-page.php","map.php","changeCluster.php","buy-p
 
 <body id = 'bodystyle'>
     <header id='headerstyle' class='navbar navbar-expand-sm navbar-dark sticky-top d-flex justify-content-between p-4'>
-        <div class="logo"><img id="logo-png" src="content/static/imgs/logo.png"></div>
-        <div id='title'><?php echo $title ?></div>
-        <div class="to-bottom">
-            <nav class="d-flex justify-content-between">
+            <nav class="d-flex justify-content-between ">
+            
+            <div id='title' class='ms-0  mt-1'><h2><img id="logo-png" class="mb-1" src="content/static/imgs/logo.svg"> <?php echo $title ?></h2></div>
+            <div class='d-flex justify-content-between pt-2 '>
                 <?php
                 session_start();
                 if (!isset($_SESSION['autho'])) {
@@ -50,25 +50,25 @@ $link = array("index.php", "forum-page.php","map.php","changeCluster.php","buy-p
 
 
                     if ($n_link[$i] != "Обратная связь" ) {
-                        echo "<a id='ad' class='ms-4 p-1' href=$link[$i]>$n_link[$i]</a>";
+                        echo "<a id='ad' class='ms-4 p-2 pb-2' text-center' href=$link[$i]>$n_link[$i]</a>";
                     } else {
                         if ($is != "0") {
                             
-                                echo "<a class='ms-4 p-1' href=$link[$i]>$n_link[$i]</a>";
+                                echo "<a class='ms-4 p-2 pt-3' href=$link[$i]>$n_link[$i]</a>";
         
                         } else {
                         }
                     }
                 }
                 if (isset($_SESSION['auth']) && $_SESSION['auth'] != 0) {
-                    echo '<input id="exit" class= "btn btn-sucsess ms-4" type="button" onClick="deleteAllCookies()" value="Выйти"/>';
+                    echo '<input id="exit" class= "btn btn-sucsess ms-4 pb-1" type="button" onClick="deleteAllCookies()" value="Выйти"/>';
                 }else{
-                    echo "<a id='ad' class='ms-4 p-1' href=$link[$i]>$n_link[$i]</a>";
+                    echo "<a id='ad' class='ms-4 p-2 pb-1' href=$link[$i]>$n_link[$i]</a>";
                     $i+=1;
-                    echo "<a id='ad' class='ms-4 p-1' href=$link[$i]>$n_link[$i]</a>";
+                    echo "<a id='ad' class='ms-4 p-2 pb-1' href=$link[$i]>$n_link[$i]</a>";
                 }
                 ?>
+                <div>
             </nav>
-        </div>
     </header>
     <main id ="page" class='card ms-5 me-5 mt-3 p-2'>

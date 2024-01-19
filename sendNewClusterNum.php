@@ -10,7 +10,7 @@ echo($_GET['cluster_id']);
 include 'dbConnect.php';
 
 //написать переключатель
-$query = "UPDATE results SET cluster_id=? WHERE id=?";
+$query = "UPDATE results SET cluster_id=?,alias='' WHERE id=?";
 $stmt = $mysql->prepare($query);
 $stmt->bind_param("ss", $_GET['cluster_id'], $_GET['id']);
 $stmt->execute();

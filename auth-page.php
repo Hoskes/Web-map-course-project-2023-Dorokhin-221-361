@@ -2,7 +2,7 @@
    <?php
    include "content/header.php";
     if (isset($_POST['login']) & isset($_POST['password'])) {
-        echo '<section class="notif"><h2>';
+        echo '<section  class="notif p-3"><div><a id="as" class ="p-1  mt-3 mb-1" href="index.php">На главную</a></div><h2>';
         include 'dbConnect.php';
         if ($mysql != null) {
             $result = mysqli_query($mysql, "SELECT id,login FROM users WHERE login='" . $_POST['login'] . "' AND password='" . $_POST['password'] . "'");
@@ -10,9 +10,9 @@
             if ($name != null) {
                 if ($_POST['login'] == $name['login']) {
                     
-                    echo "Авторизация прошла успешно. Здравствуйте!";
+                    echo "<div class='col-12 text-center mb-3'>Авторизация прошла успешно. Добро пожаловать на сайт!</div>";
                     $isauth = $name['id'];
-                    echo ($isauth);
+                    // echo ($isauth);
                     $_SESSION['auth'] = $isauth;
                 }
             }else{
@@ -20,22 +20,22 @@
             }
         } else {
 
-            echo "Данные неверны";
+            echo "<div class='text-center'>Данные неверны</div>";
         }
         echo '
-        </h2>
-        <p><a href="index.php">На главную</a></p></section>';
+        </h2></section>
+        ';
     } else {
         echo '
         <form class="form-group text-center mt-4" action="auth-page.php" method="post">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-12">
-              <div class="text-center"><h3>Форма авторизации</h3></div>
-              <div class="row col-12 p-3">
+              <div class="text-center mt-4"><h3>Форма авторизации</h3></div>
+              <div class="row col-12 p-3 mt-4">
                 <input class="form-control mt-2 text-center" type="name" name="login" placeholder="Логин">
                 <input class="form-control mt-2 text-center" type="password" name="password" placeholder="Пароль">
-                <input class="btn btn-success mt-2 text-center" type="submit" value="Авторизация">
+                <input id="as" class="btn btn-success mt-2 text-center" type="submit" value="Авторизация">
               </div>
             </div>
           </div>

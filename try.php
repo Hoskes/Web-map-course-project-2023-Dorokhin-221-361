@@ -45,6 +45,7 @@
                 beforeSend: (function() {
                     $('.submit').css('color', 'transparent');
                     $('.submit').addClass('progress-bar progress-bar-striped progress-bar-animated bg-warning');
+                    
                 }),
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     $('.error-data').slideDown();
@@ -62,18 +63,19 @@
         })
     })
 </script>
-<div class='container mt-2 mb-2 col-12'>
-    <form class="row text-center" method="post">
-        <div class="col-md-10 col-sm-10 ms-0">
-            <textarea class='form-control' name="comment" placeholder="Введите сообщение сообщение..."></textarea>
+<?php 
+if(isset($_SESSION['auth'])){
+    echo "<div class='container mt-2 mb-2 col-12'>
+    <form class='row text-center' method='post'>
+        <div class='col-md-10 col-sm-10 ms-0'>
+            <textarea class='form-control' name='comment' placeholder='Введите сообщение сообщение...'></textarea>
 
         </div>
         <div class='col-md-2 col-sm-2  m-auto ms-0'>
-            <input class='btn btn-primary' type="submit" class="button" value="Отправить текст">
+            <input id='btn-sumbit' class='btn btn-sucsess' type='submit' class='button' value='Отправить текст'>
         </div>
     </form>
 </div>
-<?php
-// include 'part-text.php';
-// include 'Web-map-project/content/footer.php';
+";
+}
 ?>

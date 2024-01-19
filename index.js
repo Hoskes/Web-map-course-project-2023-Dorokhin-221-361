@@ -184,8 +184,9 @@ function init() {
             // Добавляем новые результаты в список
             filteredData.forEach(item => {
                 const li = document.createElement("li");
+                li.id='adress';
                 // li.classList.add("col-4 text-center");
-                li.className = "text-center"
+                li.className = "text-center";
                 li.textContent = item['title'] +" "+ item['full_name'] +" (" + item['y'] +" "+item['x']+ ")";
                 li.addEventListener("click", e => {  
                     searchInput.value = "";
