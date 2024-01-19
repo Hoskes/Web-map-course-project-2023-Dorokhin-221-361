@@ -178,7 +178,7 @@ if (!isset($_GET['id'])) {
 ";
 } else {
     echo '
-    <a id="as" class="col-4 text-center mt-4 " href="changeCluster.php">Вернуться ко всем объектам</a></section>;
+    <a id="as" class="col-4 text-center mt-4 " href="changeCluster.php">Вернуться ко всем объектам</a></section>
     <h2 class="text-center">Изменить кластер записи № ' . $_GET['id'] . '?</h2><div>
     <form action="#" class="text-center mt-4">
     <select id ="select" class="form-select" name="select" >';
@@ -218,7 +218,7 @@ include 'content/footer.php';
         $.ajax({
             url: 'sendNewClusterNum.php?id=<?php echo $_GET['id'] ?>'+"&cluster_id="+document.getElementById('select').options[select.selectedIndex].value,
             method: 'get',
-            async: false, // Установите async в false для синхронного запроса
+            async: false, 
             success: function(data) {
                 // Обработка ответа от сервера
                 console.log(data);

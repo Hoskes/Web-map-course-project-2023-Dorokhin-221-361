@@ -9,9 +9,9 @@
 
 <script>
     $(document).ready(function() {
-        // Функция для автоматической перезагрузки части страницы
+        
         function reloadPartial() {
-            // Отправка AJAX-запроса на сервер
+            
             $.ajax({
                 url: 'part-text.php?f_id=<?php echo $forum_id?>',
                 type: 'POST',
@@ -24,10 +24,10 @@
             });
         }
 
-        // Вызов функции для первоначальной загрузки части страницы
+       
         reloadPartial();
         console.log('SUCC');
-        // Автоматическая перезагрузка каждые 5 секунд
+        
         setInterval(reloadPartial, 3000);
     });
     window.onload = function() {

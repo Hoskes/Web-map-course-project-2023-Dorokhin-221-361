@@ -1,11 +1,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div id='poly-container'></div>
 <div id='count-z'></div>
-#####################################################################ajax работает сместить API ключ чтоб не сперли
+
 <script>
-    //добавить GET-запросы к номерам датасетов 
-    //можно попробовать выкидывать AJAX когда нужно подробное описание
-    // // вставляет количество записей датасета
+    
     datasetNo = 62541;
 
 
@@ -37,7 +35,7 @@
         $.ajax({
             url: 'https://apidata.mos.ru/v1/datasets/' + datasetNo + '/count?$orderby=global_id&api_key=78a7232a-c378-44d7-bcd4-75dd6e24efdc',
             method: 'get',
-            async: false, // Установите async в false для синхронного запроса
+            async: false, 
             success: function(data) {
                 // Обработка ответа от сервера
                 num = data;
@@ -68,7 +66,7 @@
                 }
             });
         }
-        // Вызов функции для первоначальной загрузки части страницы
+        
 
         skip = 0;
         downloadPerTime = 100;
