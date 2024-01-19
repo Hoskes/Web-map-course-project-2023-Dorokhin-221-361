@@ -16,7 +16,8 @@
             url: "callInsertJSONProcedure.php",
             data: {
                 "json": JSON.stringify(jsonData),
-                "counter": numOfRecords
+                "counter": numOfRecords,
+                "dataset":datasetNo
             },
             success: function(response) {
                 // Обработка успешного ответа

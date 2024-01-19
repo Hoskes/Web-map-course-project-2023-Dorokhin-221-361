@@ -2,7 +2,7 @@
 <?php
 $title = "СоциальнаяСреда.рф";
 $title = "СоциальнаяСреда.рф";
-$n_link = array("Главная", "Форум", "Карта","Сменить кластер","Изменить псевдоним кластеров","Регистрация", "Авторизация");
+$n_link = array("Главная", "Форум", "Карта","Изменить объект группы","Изменить группу объектов","Регистрация", "Авторизация");
 $link = array("index.php", "forum-page.php","map.php","changeCluster.php","ClustersData.php","reg.php", "auth-page.php");
 ?>
 
@@ -61,7 +61,7 @@ $link = array("index.php", "forum-page.php","map.php","changeCluster.php","Clust
                     }
                 }
                 if (isset($_SESSION['auth']) && $_SESSION['auth'] != 0) {
-                    echo '<input id="exit" class= "btn btn-sucsess ms-4 pb-1" type="button" onClick="deleteAllCookies()" value="Выйти"/>';
+                    echo '<input id="exit" class= "btn btn-sucsess ms-4 pb-2" type="button" onClick="deleteAllCookies()" value="Выйти"/>';
                 }else{
                     echo "<a id='ad' class='ms-4 p-2 pb-1' href=$link[$i]>$n_link[$i]</a>";
                     $i+=1;

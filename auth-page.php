@@ -10,13 +10,13 @@
             if ($name != null) {
                 if ($_POST['login'] == $name['login']) {
                     
-                    echo "<div class='col-12 text-center mb-3'>Авторизация прошла успешно. Добро пожаловать на сайт!</div>";
+                    echo "<div class='container text-center'><div class='col-12 text-center mt-3'>Авторизация прошла успешно. Добро пожаловать на сайт!</div><img id='pic' class='col-12  m-a mb-1' src='content/static/imgs/s-auth.svg'></div>";
                     $isauth = $name['id'];
                     // echo ($isauth);
                     $_SESSION['auth'] = $isauth;
                 }
             }else{
-                echo "Данные для авторизации некорректны";
+                echo "<div class='container text-center'><div class='text-center mt-4'>Данные для авторизации некорректны</div><img id='pic' class=' col-12  m-a mb-1' src='content/static/imgs/f-auth.svg'></div>";
             }
         } else {
 

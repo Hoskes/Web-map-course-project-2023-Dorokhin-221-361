@@ -1,15 +1,18 @@
 <?php
 include 'content/header.php';
-echo '<h1 class="text-center mt-3">Смена кластеров</h1>';
 
 if (!isset($_GET['id'])) {
-
+    echo '<h2 class="text-center mt-3">Смена социальной группы объекта</h2>
+    <div><h7><pre></pre>  Эта страница необходима для изменения погрешностей измерений программы кластеризации. Для изменения группы объекта нажмите
+    кнопку "Изменить группу" и выберите в в форме новую группу для объекта из выпадающего списка.</h7><div>';
+    
     echo "<div class='text-center col-12'>
     <div>
         <h3>Введите номер кластера</h3>
     </div>
     <input type='text' id='searchInput' class='mb-2' placeholder='Введите запрос'>
 </div>
+<div>Найдено записей</div><l id='rows-count'></l>
 <table class='table m-auto table-striped table-hover table-bordered border border-success'>
     <thead>
         <tr>
@@ -18,7 +21,6 @@ if (!isset($_GET['id'])) {
             <th scope='col'>Долгота</th>
             <th scope='col'>Широта</th>
             <th scope='col'>Изменить кластер</th>
-            <!-- <th scope='col'>Смотреть на карте</th> -->
         </tr>
     </thead>
     <tbody id='searchResults'>
@@ -37,7 +39,8 @@ if (!isset($_GET['id'])) {
 
                 // Очищаем предыдущие результаты
                 searchResults.innerHTML = '';
-
+                document.getElementById('rows-count').innerHTML='';
+                document.getElementById('rows-count').innerHTML=filteredData.length;
                 // Добавляем новые результаты в список
                 filteredData.forEach(item => {
                 
@@ -65,8 +68,6 @@ if (!isset($_GET['id'])) {
                     const cell6 = document.createElement('td');
                     row.appendChild(cell6);
 
-                    const cell7 = document.createElement('td');
-                    row.appendChild(cell7);
 
                     const div1 = document.createElement('div');
                             div1.id = 'div-gr-bg';
@@ -89,6 +90,7 @@ if (!isset($_GET['id'])) {
 
              
             });
+            
             }
 
             // Обработчик события ввода текста
@@ -105,9 +107,10 @@ if (!isset($_GET['id'])) {
                     // Обновление контейнера
                     if (response.length > 0) {
                         console.log('success');
-
+                        document.getElementById('rows-count').innerHTML=response.length;
+                        console.log(response.length);
                         response.forEach(item => {
-                            if (item['title'] == null) {
+                            if (item['title'] == null | item['alias'] != null) {
                                 item['title'] = item['alias'];
                                 // console.log(data);
                             }
@@ -136,8 +139,7 @@ if (!isset($_GET['id'])) {
                             const cell6 = document.createElement('td');
                             row.appendChild(cell6);
         
-                            const cell7 = document.createElement('td');
-                            row.appendChild(cell7);
+                            
         
 
                             const div1 = document.createElement('div');
@@ -176,7 +178,7 @@ if (!isset($_GET['id'])) {
 ";
 } else {
     echo '
-    
+    <a id="as" class="col-4 text-center mt-4 " href="changeCluster.php">Вернуться ко всем объектам</a></section>;
     <h2 class="text-center">Изменить кластер записи № ' . $_GET['id'] . '?</h2><div>
     <form action="#" class="text-center mt-4">
     <select id ="select" class="form-select" name="select" >';

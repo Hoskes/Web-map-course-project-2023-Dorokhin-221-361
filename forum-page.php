@@ -16,10 +16,10 @@ if (!isset($_GET['id']) || $_GET['id'] == '') {
         while ($forum = mysqli_fetch_assoc($result)) {
             $descr = $forum['description'];
             if(strlen($descr)>200){
-                $descr=substr($descr,0,400).' . . .';
+                $descr=substr($descr,0,200).' . . .';
             }
             $content.="<div class='card mt-4 p-2'>";
-            $content .= "<br><h2 class='card-title'>" . $forum['title'] . "</h2><div>" . $descr . "</div class='mt-2 ms-2'></h2><div class='card-text'>" . $forum['description'] . "</div class='mt-2 ms-2 p-2'><br><div>Дата создания:" . $forum['date_created'] . "<br>Дата изменения: " . $forum['date_changed'] . "</div>";
+            $content .= "<br><h2 class='card-title'>" . $forum['title'] . "</h2><div>" . $descr  . "</div class='mt-2 ms-2 p-2'><br><div>Дата создания:" . $forum['date_created'] . "<br>Дата изменения: " . $forum['date_changed'] . "</div>";
             $content .= "<a id='btn-sumbit' class='btn btn-sucsess' href='forum-page.php?id=" . $forum['id'] . "'>Открыть</a>";
             $content .="</div>";
         }
