@@ -6,36 +6,36 @@
     //добавить GET-запросы к номерам датасетов 
     //можно попробовать выкидывать AJAX когда нужно подробное описание
     // // вставляет количество записей датасета
-    datasetNo =62541;
-    
+    datasetNo = 62541;
+
 
     $(document).ready(function() {
         function sendToDB(jsonData, numOfRecords) {
-        $.ajax({
-            type: "POST",
-            url: "callInsertJSONProcedure.php",
-            data: {
-                "json": JSON.stringify(jsonData),
-                "counter": numOfRecords,
-                "dataset":datasetNo
-            },
-            success: function(response) {
-                // Обработка успешного ответа
-                // console.log(numOfRecords);
-                console.log(response);
-            },
-            error: function(xhr, status, error) {
-                // Обработка ошибки
-                console.log(error);
-            }
-        });
-    }
+            $.ajax({
+                type: "POST",
+                url: "callInsertJSONProcedure.php",
+                data: {
+                    "json": JSON.stringify(jsonData),
+                    "counter": numOfRecords,
+                    "dataset": datasetNo
+                },
+                success: function(response) {
+                    // Обработка успешного ответа
+                    // console.log(numOfRecords);
+                    console.log(response);
+                },
+                error: function(xhr, status, error) {
+                    // Обработка ошибки
+                    console.log(error);
+                }
+            });
+        }
 
 
 
         let num = 10;
         $.ajax({
-            url: 'https://apidata.mos.ru/v1/datasets/'+datasetNo+'/count?$orderby=global_id&api_key=78a7232a-c378-44d7-bcd4-75dd6e24efdc',
+            url: 'https://apidata.mos.ru/v1/datasets/' + datasetNo + '/count?$orderby=global_id&api_key=78a7232a-c378-44d7-bcd4-75dd6e24efdc',
             method: 'get',
             async: false, // Установите async в false для синхронного запроса
             success: function(data) {
@@ -49,15 +49,13 @@
 
 
 
-        // парсит датасет с сайта в json, по параметрам в теле POST-запроса
-        function downloadDataToDB(skip,top) {
-            // Отправка AJAX-запроса на сервер
+        function downloadDataToDB(skip, top) {
             $.ajax({
-                url: 'https://apidata.mos.ru/v1/datasets/'+datasetNo+'/rows?$orderby=global_id&api_key=78a7232a-c378-44d7-bcd4-75dd6e24efdc'+'&$skip='+skip+'&$top='+top,
+                url: 'https://apidata.mos.ru/v1/datasets/' + datasetNo + '/rows?$orderby=global_id&api_key=78a7232a-c378-44d7-bcd4-75dd6e24efdc' + '&$skip=' + skip + '&$top=' + top,
                 type: 'GET',
                 dataType: 'json',
                 success: function(response) {
-                    // Обновление контейнера
+                    
                     if (response.length > 0) {
                         console.log('success');
                         sendToDB(response, top);
@@ -71,18 +69,18 @@
             });
         }
         // Вызов функции для первоначальной загрузки части страницы
-        
+
         skip = 0;
         downloadPerTime = 100;
         while (num > 0) {
             if (num < downloadPerTime) {
-                downloadDataToDB(skip,num);
-                num=0;
+                downloadDataToDB(skip, num);
+                num = 0;
             } else {
-                downloadDataToDB(skip,downloadPerTime);
-                num-=downloadPerTime;
+                downloadDataToDB(skip, downloadPerTime);
+                num -= downloadPerTime;
             }
-            skip+=downloadPerTime;
+            skip += downloadPerTime;
         }
         console.log('SUCCESS');
     });

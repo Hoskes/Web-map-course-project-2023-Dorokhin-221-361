@@ -1,23 +1,23 @@
-// Функция для определения ориентации трех точек
+
 function orientationT(p, q, r) {
     let val = (q[1] - p[1]) * (r[0] - q[0]) - (q[0] - p[0]) * (r[1] - q[1]);
     if (val == 0) {
-        return 0; // Коллинеарные точки
+        return 0; 
     } else if (val > 0) {
-        return 1; // Против часовой стрелки
+        return 1; 
     } else {
-        return 2; // По часовой стрелке
+        return 2;
     }
 }
 
-// Функция для построения выпуклой оболочки
+
 function convexHull(points) {
     let n = points.length;
     if (n < 3) {
-        return []; // Минимальное количество точек для построения выпуклой оболочки - 3
+        return []; 
     }
 
-    // Находим самую левую точку
+   
     let leftmost = 0;
     for (let i = 1; i < n; i++) {
         if (points[i][0] < points[leftmost][0]) {
@@ -147,35 +147,26 @@ function markPlaces(map) {
             console.log('error');
         }
     });
-    // var myPoint = new ymaps.Placemark([55.694843, 37.435023]);
-    // myMap.geoObjects.add(myPoint);
+
 }
-// Дождёмся загрузки API и готовности DOM.
+
 ymaps.ready(init);
 
 function init() {
-    // Создание экземпляра карты и его привязка к контейнеру с
-    // заданным id ("map").
     myMap = new ymaps.Map('map', {
-        // При инициализации карты обязательно нужно указать
-        // её центр и коэффициент масштабирования.
         center: [55.76, 37.64], // Москва
         zoom: 10
     }, {
         searchControlProvider: 'yandex#search'
     });
-    // var myPoint = new ymaps.Placemark([55.694843, 37.435023]);
-    // myMap.geoObjects.add(myPoint);
     console.log(data);
     markPlaces(myMap);
-
         const searchInput = document.getElementById("searchInput");
         const searchResults = document.getElementById("searchResults");
-
         // Функция для обновления результатов поиска
         function updateSearchResults() {
             const query = searchInput.value.toLowerCase();
-            // console.log(typeof data[0]['title']);
+           
             const filteredData = data.filter(item => item.title.toString().includes(query));
 
             // Очищаем предыдущие результаты
@@ -185,7 +176,7 @@ function init() {
             filteredData.forEach(item => {
                 const li = document.createElement("li");
                 li.id='adress';
-                // li.classList.add("col-4 text-center");
+                
                 li.className = "text-center";
                 li.textContent = item['title'] +" "+ item['full_name'] +" (" + item['y'] +" "+item['x']+ ")";
                 li.addEventListener("click", e => {  
@@ -197,8 +188,6 @@ function init() {
                 searchResults.appendChild(li);
             });
         }
-
-        // Обработчик события ввода текста
         searchInput.addEventListener("input", updateSearchResults);
 
 }

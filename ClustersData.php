@@ -57,16 +57,16 @@ include 'content/footer.php';
       $.ajax({
           url: "markCluster.php?id=<?php echo $_GET['cluster_id']?>&cluster_id="+document.getElementById('input').value,
           method: 'get',
-          async: true, // Установите async в false для синхронного запроса
+          async: true, 
           success: function(data) {
-              // Обработка ответа от сервера
+              
               console.log(data);
               window.location.replace('ClustersData.php');
           },
           error: function(data) {
-              // Обработка ответа от сервера
+              
               console.log(data);
-              // window.location.replace('ClustersData.php');
+              
           }
       });
   });
